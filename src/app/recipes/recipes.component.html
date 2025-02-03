@@ -1,0 +1,28 @@
+<div class="container">
+  <div class="title"><h1>Learn, Cook, Eat Your Food</h1></div>
+  <div class="categories">
+    <ul>
+      <li *ngFor="let category of ['Chicken', 'Beef', 'Dessert', 'Pasta', 'Goat', 'Lamb', 'Miscellaneous', 'Pork', 'Seafood', 'Side', 'Starter', 'Vegan', 'Vegetarian']"
+          [class.active]="selectedCategory === category">
+        <a href="#" (click)="getMealsByCategory(category); $event.preventDefault()">
+          {{ category }}
+        </a>
+      </li>
+    </ul>
+  </div>
+</div>
+<div class="container">
+  <div class="all-recipes">
+    <div class="recipe" *ngFor="let meal of meals">
+      <img [src]="meal.strMealThumb" [alt]="meal.strMeal">
+      <div class="details">
+        <h2>{{ meal.strMeal }}</h2>
+        <p class="region">
+          <i class="fa-solid fa-globe"></i> {{ meal.strArea }}
+        </p>
+        <a [routerLink]="['/recipe', meal.idMeal]"> View Recipe </a>
+      </div>
+    </div>
+  </div>
+</div>
+
